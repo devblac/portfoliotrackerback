@@ -19,6 +19,7 @@ from django.urls import path, include
 from rest_framework import routers, serializers, viewsets
 from ptback.structure import views
 
+from api.router import router_posts
 ''' 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -46,7 +47,9 @@ router.register(r'groups', views.GroupViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    #path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-
+    path('admin/', admin.site.urls),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),  
+    path('api/', include('api.urls')), ## point the root to my api url module
+    path('api-post/', include(router_posts.urls)), 
 ]
+

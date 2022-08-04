@@ -12,6 +12,7 @@ django-guardian = "^2.4.0"
 django-filter = "^21.1"
 django-markdown = "^0.8.4"
 djangorestframework = "^3.13.1"
+django-cors-headers = "^3.13.0"
 
 [tool.poetry.dev-dependencies]
 
