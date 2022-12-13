@@ -1,22 +1,25 @@
 from rest_framework import serializers
-from api.models import User, Post
+from api.models import Users, Transactions
 from rest_framework.serializers import ModelSerializer
 
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = User
+        model = Users
         fields = ('id',
                   'user_name',
-                  'mail',
-                  'password'
-                  'twitter',
-                  'instagram')
+                  'password',
+                  )
 
-class PostSerializer(serializers.ModelSerializer):
-     
+class TransactionSerializer(serializers.ModelSerializer):
+    
     class Meta:
-        model = Post
-        fields = ['id',
-                  'title',
-                  'content']
+        model = Transactions
+        fields = [
+            'transaction_id',
+            'user_id',
+            'symbol',
+            'amount',
+            'type',
+            'transacted_at'
+            ]
