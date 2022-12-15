@@ -13,7 +13,7 @@ from django.conf import settings
 from django.middleware import csrf
 from rest_framework import exceptions as rest_exceptions, response, decorators as rest_decorators, permissions as rest_permissions
 from rest_framework_simplejwt import tokens, views as jwt_views, serializers as jwt_serializers, exceptions as jwt_exceptions
-from api import serializers, models
+from api import serializers, models, utils
 
 
 
@@ -53,7 +53,7 @@ def build_portfolio(txs: list[Transactions]) -> dict[str, int]:
 def get_user_portfolio(request):
     ## print(Transactions.objects.filter(user_id=1).all())
     breakpoint()
-    txs = Transactions.objects.filter(user_id=1).all()
+    txs = Transactions.objects.filter(user_name=utils.get_logged_in_user_id()).all()
     ##print(txs)
     result = build_portfolio(list(txs))
     print(type(result))
